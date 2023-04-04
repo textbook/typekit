@@ -1,0 +1,12 @@
+{
+  "name": "@typekit/shared",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "devDependencies": {},
+  "scripts": {},
+  "keywords": [],
+  "author": "Jonathan Sharpe <mail@jonrshar.pe>",
+  "license": "ISC"
+}

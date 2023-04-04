@@ -5,10 +5,16 @@ WORKDIR /home/node
 
 COPY package*.json ./
 COPY packages/server/package.json ./packages/server/
-RUN npm --include-workspace-root --workspace packages/server ci
+COPY packages/shared/ ./packages/shared/
+RUN npm \
+    --include-workspace-root \
+    --workspace packages/server \
+    --workspace packages/shared \
+    ci
 
 COPY tsconfig.json ./
 COPY packages/server/ ./packages/server/
+COPY packages/shared/ ./packages/shared/
 RUN npm --workspace packages/server run build
 
 FROM node:18-alpine

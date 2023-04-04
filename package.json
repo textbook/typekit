@@ -33,7 +33,8 @@
   },
   "homepage": "https://github.com/textbook/typekit#readme",
   "workspaces": [
-    "packages/server"
+    "packages/server",
+    "packages/shared"
   ],
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^3.0.3",
