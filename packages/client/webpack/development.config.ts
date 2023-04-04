@@ -14,7 +14,7 @@ export default merge(common, {
 			{
 				context: ["/api", "/healthz"],
 				logLevel: "debug",
-				logProvider: () => console,
+				logProvider: (): Console => console,
 				target: "http://localhost:3100",
 			},
 		],

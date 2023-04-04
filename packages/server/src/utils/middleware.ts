@@ -1,8 +1,14 @@
 import { join } from "node:path";
 
-import express, { type RequestHandler, Router } from "express";
+import express, {
+	type ErrorRequestHandler,
+	type RequestHandler,
+	Router,
+} from "express";
+import morgan from "morgan";
 
 import { HttpStatus } from "./http";
+import logger from "./logger";
 
 export const clientRouter = (baseDir: string, apiRoot: string): Router => {
 	const router = Router();
@@ -15,6 +21,23 @@ export const clientRouter = (baseDir: string, apiRoot: string): Router => {
 	});
 	return router;
 };
+
+export const logErrors = (): ErrorRequestHandler => (err, req, res, next) => {
+	if (!res.headersSent) {
+		logger.error(err);
+		res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	next(err);
+};
+
+export const logRequests = (): RequestHandler =>
+	morgan("dev", {
+		stream: {
+			write(message: string): void {
+				logger.info(message.trim());
+			},
+		},
+	});
 
 export const methodNotAllowed = (): RequestHandler => (_, res) =>
 	res.sendStatus(HttpStatus.METHOD_NOT_ALLOWED);
