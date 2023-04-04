@@ -18,7 +18,12 @@ WORKDIR /home/node
 
 COPY package*.json ./
 COPY --from=server /home/node/packages/server/package.json ./packages/server/
-RUN npm --include-workspace-root --workspace packages/server ci --omit dev
+RUN npm \
+    --ignore-scripts \
+    --include-workspace-root \
+    --omit dev \
+    --workspace packages/server \
+    ci
 
 COPY --from=server /home/node/dist/ ./dist/
 
