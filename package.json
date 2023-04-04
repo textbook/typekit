@@ -11,6 +11,10 @@
   "scripts": {
     "prebuild": "del-cli dist/",
     "build": "npm --workspace packages/server run build",
+    "e2e": "concurrently --kill-others --success first \"npm:e2e:*\"",
+    "e2e:app": "cross-env PORT=4321 npm run serve",
+    "pree2e:run": "wait-on --log --timeout 60000 http-get://localhost:4321/healthz",
+    "e2e:run": "npm --workspace packages/e2e run e2e",
     "lint": "npm run lint:eslint && npm run lint:prettier -- --check",
     "lint:eslint": "eslint packages/",
     "lint:fix": "npm run lint:eslint -- --fix && npm run lint:prettier -- --write",
@@ -34,7 +38,8 @@
   "homepage": "https://github.com/textbook/typekit#readme",
   "workspaces": [
     "packages/server",
-    "packages/shared"
+    "packages/shared",
+    "packages/e2e"
   ],
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^3.0.3",
@@ -42,16 +47,19 @@
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
+    "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
     "del-cli": "^5.0.0",
     "eslint": "^8.37.0",
     "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-testing-library": "^5.10.2",
     "husky": "^8.0.3",
     "jest": "^29.5.0",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "wait-on": "^7.0.1"
   }
 }

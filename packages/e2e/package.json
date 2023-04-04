@@ -1,0 +1,17 @@
+{
+  "name": "@typekit/e2e",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@testing-library/cypress": "^9.0.0",
+    "cypress": "^12.9.0",
+    "eslint-plugin-cypress": "^2.13.2"
+  },
+  "scripts": {
+    "e2e": "cypress run --e2e"
+  },
+  "keywords": [],
+  "author": "Jonathan Sharpe <mail@jonrshar.pe>",
+  "license": "ISC"
+}
