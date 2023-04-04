@@ -2,8 +2,10 @@
   "name": "@typekit/server",
   "version": "0.1.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --project tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
