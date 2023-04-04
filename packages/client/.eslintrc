@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "plugin:jsx-a11y/strict",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.{spec,test}.ts{,x}"
+      ],
+      "extends": [
+        "plugin:testing-library/react"
+      ]
+    }
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
