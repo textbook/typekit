@@ -17,11 +17,13 @@
     "jest-environment-jsdom": "^29.5.0",
     "ts-loader": "^9.4.2",
     "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2",
     "webpack-merge": "^5.8.0",
     "whatwg-fetch": "^3.6.2"
   },
   "scripts": {
     "build": "webpack --config webpack/production.config.ts",
+    "dev": "webpack serve --config webpack/development.config.ts",
     "test": "jest"
   },
   "keywords": [],

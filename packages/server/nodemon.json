@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/nodemon.json",
+  "exec": "node",
+  "ext": "json,ts",
+  "exitcrash": true,
+  "nodeArgs": [
+    "--experimental-specifier-resolution=node",
+    "--inspect",
+    "--loader=ts-node/esm"
+  ]
+}
