@@ -22,6 +22,13 @@ export const clientRouter = (baseDir: string, apiRoot: string): Router => {
 	return router;
 };
 
+export const httpsOnly = (): RequestHandler => (req, res, next) => {
+	if (!req.secure) {
+		return res.redirect(301, `https://${req.headers.host}${req.originalUrl}`);
+	}
+	next();
+};
+
 export const logErrors = (): ErrorRequestHandler => (err, req, res, next) => {
 	if (!res.headersSent) {
 		logger.error(err);
